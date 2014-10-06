@@ -1,0 +1,67 @@
+$colors: #F07464 #9BAAB9 #99704B #495867 #F2C66D #FBE6E1 #BCBDC1 #A0C2BB #F3A471 #FFFFFF;
+
+.colors {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  width: 150px;
+}
+
+.colors__color {
+  margin: 6px;
+  padding: 0;
+  height: 36px;
+  width: 36px;
+  border-radius: 36px;
+  z-index: 10;
+  float: left;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, margin 0.2s ease-in;
+  -moz-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, margin 0.2s ease-in;
+  -ms-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, margin 0.2s ease-in;
+  -o-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, margin 0.2s ease-in;
+  transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, margin 0.2s ease-in;
+  &:hover, &.active {
+    height: 48px;
+    width: 48px;
+    border-radius: 48px;
+    margin: 0;
+  }
+}
+
+@for $i from 1 through 9 {
+  &.color-#{$i} {
+    background-color: nth($colors, $i);
+  }
+}
+
+.colors__erase {
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.7em;
+  color: #999;
+  line-height: 36px;
+  float: left;
+  display: inline-block;
+  height: 36px;
+  width: 120px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  background-color: #f7f7f7;
+  margin: 5px 9px;
+  -webkit-transition: border 0.2 ease-in;
+  -moz-transition: border 0.2 ease-in;
+  -ms-transition: border 0.2 ease-in;
+  -o-transition: border 0.2 ease-in;
+  transition: border 0.2 ease-in;
+
+  &:hover, &.active {
+    margin: 5px 0;
+    height: 36px;
+    width: 138px;
+    border-radius: 3px;
+    color: #6E6F71;
+    // border: 1px solid #6E6F71;
+  }
+}

@@ -1,0 +1,56 @@
+doctype
+html
+  head
+    link(rel='shortcut icon', type="image/x-icon", href='/favicon.ico')
+    link(rel='stylesheet', href='app.css')
+    title The Internet is a Dangerous Place
+  body
+
+  .danger
+
+    canvas#canvas
+
+    .controls
+      h5 COLORS
+      ul.colors
+        - for (var i=1; i<10; i++)
+          li(class="color-#{i} colors__color")
+        li.color-10.colors__erase.colors__color ERASER
+
+      hr.clear
+      h5 SIZES
+      ul.sizes
+        - for (var i=1; i<5; i++)
+          li(class="size-#{i * 8} sizes__size")
+
+  footer.social
+
+    ul.social__links
+      li.social__links-site-title jeffreypierce.net
+      li
+        a.social__link(href="http://www.github.com/jeffreypierce")
+          span.social__symbol &#xe037;
+          span.social__title github
+      li
+        a.social__link(href="http://www.soundcloud.com/jeffreypierce")
+          span.social__symbol &#xe078;
+          span.social__title soundcloud
+      li
+        a.social__link(href="http://www.twitter.com/jeffrey_pierce")
+          span.social__symbol &#xe086;
+          span.social__title twitter
+      li
+        a.social__link(href="https://www.linkedin.com/profile/view?id=82353203")
+          span.social__symbol &#xe052;
+          span.social__title linkedin
+
+  script(src='app.js')
+  script.
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-4288449-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();

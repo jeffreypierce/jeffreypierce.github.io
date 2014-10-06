@@ -1,0 +1,88 @@
+.social__links {
+  margin: 0;
+  padding: 0;
+  -webkit-transition: padding 0.2s;
+  -moz-transition: padding 0.2s;
+  -ms-transition: padding 0.2s;
+  -o-transition: padding 0.2s;
+  transition: padding 0.2s;
+
+  text-align: right;
+  &:hover {
+    padding: 10px 0;
+    .social__link {
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      margin: 0 -5px;
+    }
+    .social__symbol {
+      font-size: 2.2rem;
+    }
+    .social__links-site-title {
+      font-size: 1em;
+      line-height: 40px;
+    }
+  }
+}
+
+.social__links-site-title {
+  position: absolute;
+  left: 20px;
+  font-size: 0.8em;
+  line-height: 30px;
+  -webkit-transition: font-size 0.2s, line-height 0.2s;
+  -moz-transition: font-size 0.2s, line-height 0.2s;
+  -ms-transition: font-size 0.2s, line-height 0.2s;
+  -o-transition: font-size 0.2s, line-height 0.2s;
+  transition: font-size 0.2s, line-height 0.2s;
+}
+
+.social li {
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.social__link {
+  text-decoration: none;
+  color: #999;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 40px;
+  -webkit-transition: background 0.2s ease-in, color 0.2s ease-in;
+  -moz-transition: background 0.2s ease-in, color 0.2s ease-in;
+  -ms-transition: background 0.2s ease-in, color 0.2s ease-in;
+  -o-transition: background 0.2s ease-in, color 0.2s ease-in;
+  transition: background 0.2s ease-in, color 0.2s ease-in;
+  &:hover {
+    background: #FBE6E1;
+    color: #6E6F71;
+  }
+}
+
+.social__title {
+  text-transform: uppercase;
+  opacity: 0;
+  display: none;
+  -webkit-transition: opacity 0.2s ease-in;
+  -moz-transition: opacity 0.2s ease-in;
+  -ms-transition: opacity 0.2s ease-in;
+  -o-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in;
+  font-weight: 100;
+}
+
+.social__symbol {
+  font-family: 'Mono Social Icons Font';
+  font-size: 1.3rem;
+  margin-top: 4px;
+  -webkit-transition: font-size 0.2s ease-in;
+  -moz-transition: font-size 0.2s ease-in;
+  -ms-transition: font-size 0.2s ease-in;
+  -o-transition: font-size 0.2s ease-in;
+  transition: font-size 0.2s ease-in;
+  vertical-align: baseline;
+}

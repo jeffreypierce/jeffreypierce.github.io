@@ -1,0 +1,390 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'grunt-autoprefixer',
+1 verbose cli   '--save-dev' ]
+2 info using npm@1.2.18
+3 info using node@v0.10.5
+4 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/package.json
+5 warn package.json jeffreypierce.net@0.1.0 No README.md file found!
+6 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt/package.json
+7 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-contrib-coffee/package.json
+8 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-contrib-connect/package.json
+9 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-contrib-copy/package.json
+10 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-contrib-jade/package.json
+11 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-contrib-uglify/package.json
+12 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-contrib-watch/package.json
+13 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-sass/package.json
+14 verbose from cache /Users/jeffreypierce/dev/jeffreypierce.github.io/package.json
+15 verbose readDependencies using package.json deps
+16 verbose cache add [ 'grunt-autoprefixer', null ]
+17 verbose cache add name=undefined spec="grunt-autoprefixer" args=["grunt-autoprefixer",null]
+18 verbose parsed url { protocol: null,
+18 verbose parsed url   slashes: null,
+18 verbose parsed url   auth: null,
+18 verbose parsed url   host: null,
+18 verbose parsed url   port: null,
+18 verbose parsed url   hostname: null,
+18 verbose parsed url   hash: null,
+18 verbose parsed url   search: null,
+18 verbose parsed url   query: null,
+18 verbose parsed url   pathname: 'grunt-autoprefixer',
+18 verbose parsed url   path: 'grunt-autoprefixer',
+18 verbose parsed url   href: 'grunt-autoprefixer' }
+19 silly lockFile de9ac666-grunt-autoprefixer grunt-autoprefixer
+20 verbose lock grunt-autoprefixer /Users/jeffreypierce/.npm/de9ac666-grunt-autoprefixer.lock
+21 silly lockFile de9ac666-grunt-autoprefixer grunt-autoprefixer
+22 silly lockFile de9ac666-grunt-autoprefixer grunt-autoprefixer
+23 verbose addNamed [ 'grunt-autoprefixer', '' ]
+24 verbose addNamed [ null, '' ]
+25 silly lockFile 07ba9399-grunt-autoprefixer grunt-autoprefixer@
+26 verbose lock grunt-autoprefixer@ /Users/jeffreypierce/.npm/07ba9399-grunt-autoprefixer.lock
+27 silly addNameRange { name: 'grunt-autoprefixer', range: '', hasData: false }
+28 verbose url raw grunt-autoprefixer
+29 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-autoprefixer' ]
+30 verbose url resolved https://registry.npmjs.org/grunt-autoprefixer
+31 info trying registry request attempt 1 at 00:22:05
+32 verbose etag "1DZXPFEXKZT1V9L3KUA471QX2"
+33 http GET https://registry.npmjs.org/grunt-autoprefixer
+34 http 304 https://registry.npmjs.org/grunt-autoprefixer
+35 silly registry.get cb [ 304,
+35 silly registry.get   { date: 'Mon, 06 Oct 2014 04:22:06 GMT',
+35 silly registry.get     server: 'Apache',
+35 silly registry.get     via: '1.1 varnish',
+35 silly registry.get     'last-modified': 'Mon, 06 Oct 2014 04:22:06 GMT',
+35 silly registry.get     'cache-control': 'max-age=60',
+35 silly registry.get     etag: '"1DZXPFEXKZT1V9L3KUA471QX2"',
+35 silly registry.get     'x-served-by': 'cache-iad2121-IAD',
+35 silly registry.get     'x-cache': 'HIT',
+35 silly registry.get     'x-cache-hits': '1',
+35 silly registry.get     'x-timer': 'S1412569326.510143,VS0,VE83',
+35 silly registry.get     vary: 'Accept',
+35 silly registry.get     'content-length': '0',
+35 silly registry.get     'keep-alive': 'timeout=10, max=50',
+35 silly registry.get     connection: 'Keep-Alive' } ]
+36 verbose etag grunt-autoprefixer from cache
+37 silly addNameRange number 2 { name: 'grunt-autoprefixer', range: '', hasData: true }
+38 silly addNameRange versions [ 'grunt-autoprefixer',
+38 silly addNameRange   [ '0.1.0',
+38 silly addNameRange     '0.1.20130424',
+38 silly addNameRange     '0.1.20130516',
+38 silly addNameRange     '0.1.20130615',
+38 silly addNameRange     '0.2.0',
+38 silly addNameRange     '0.2.20130718',
+38 silly addNameRange     '0.2.20130806',
+38 silly addNameRange     '0.3.0',
+38 silly addNameRange     '0.3.1',
+38 silly addNameRange     '0.4.0',
+38 silly addNameRange     '0.4.1',
+38 silly addNameRange     '0.4.2',
+38 silly addNameRange     '0.5.0',
+38 silly addNameRange     '0.6.0',
+38 silly addNameRange     '0.6.1',
+38 silly addNameRange     '0.6.2',
+38 silly addNameRange     '0.6.3',
+38 silly addNameRange     '0.6.4',
+38 silly addNameRange     '0.6.5',
+38 silly addNameRange     '0.7.0',
+38 silly addNameRange     '0.7.1',
+38 silly addNameRange     '0.7.2',
+38 silly addNameRange     '0.7.3',
+38 silly addNameRange     '0.7.4',
+38 silly addNameRange     '0.7.5',
+38 silly addNameRange     '0.7.6',
+38 silly addNameRange     '0.8.0',
+38 silly addNameRange     '0.8.1',
+38 silly addNameRange     '0.8.2',
+38 silly addNameRange     '1.0.0',
+38 silly addNameRange     '1.0.1' ] ]
+39 verbose addNamed [ 'grunt-autoprefixer', '1.0.1' ]
+40 verbose addNamed [ '1.0.1', '1.0.1' ]
+41 silly lockFile 8c447b4f-grunt-autoprefixer-1-0-1 grunt-autoprefixer@1.0.1
+42 verbose lock grunt-autoprefixer@1.0.1 /Users/jeffreypierce/.npm/8c447b4f-grunt-autoprefixer-1-0-1.lock
+43 verbose read json /Users/jeffreypierce/.npm/grunt-autoprefixer/1.0.1/package/package.json
+44 silly lockFile 8c447b4f-grunt-autoprefixer-1-0-1 grunt-autoprefixer@1.0.1
+45 silly lockFile 8c447b4f-grunt-autoprefixer-1-0-1 grunt-autoprefixer@1.0.1
+46 silly lockFile 07ba9399-grunt-autoprefixer grunt-autoprefixer@
+47 silly lockFile 07ba9399-grunt-autoprefixer grunt-autoprefixer@
+48 silly resolved [ { name: 'grunt-autoprefixer',
+48 silly resolved     version: '1.0.1',
+48 silly resolved     description: 'Parse CSS and add vendor-prefixed CSS properties using the Can I Use database. Based on Autoprefixer.',
+48 silly resolved     author: { name: 'Dmitry Nikitenko', email: 'dima.nikitenko@gmail.com' },
+48 silly resolved     repository: { type: 'git', url: 'nDmitry/grunt-autoprefixer' },
+48 silly resolved     license: 'MIT',
+48 silly resolved     engines: { node: '>= 0.10.0' },
+48 silly resolved     scripts: { test: 'grunt test' },
+48 silly resolved     keywords: [ 'gruntplugin', 'css', 'postprocessor', 'prefix', 'autoprefixer' ],
+48 silly resolved     files: [ 'tasks', 'LICENSE' ],
+48 silly resolved     dependencies:
+48 silly resolved      { 'autoprefixer-core': '^3.0.0',
+48 silly resolved        diff: '~1.0.8',
+48 silly resolved        chalk: '~0.5.0' },
+48 silly resolved     devDependencies:
+48 silly resolved      { grunt: '~0.4.4',
+48 silly resolved        'grunt-contrib-jshint': '~0.10.0',
+48 silly resolved        'grunt-contrib-clean': '~0.6.0',
+48 silly resolved        'grunt-contrib-nodeunit': '~0.4.0',
+48 silly resolved        'grunt-contrib-copy': '~0.5.0',
+48 silly resolved        'load-grunt-tasks': '~0.6.0',
+48 silly resolved        'time-grunt': '~1.0.0' },
+48 silly resolved     peerDependencies: { grunt: '~0.4.2' },
+48 silly resolved     readme: '# grunt-autoprefixer\n[![Build Status](https://travis-ci.org/nDmitry/grunt-autoprefixer.png?branch=master)](https://travis-ci.org/nDmitry/grunt-autoprefixer)\n[![Dependency Status](https://david-dm.org/nDmitry/grunt-autoprefixer.png)](https://david-dm.org/nDmitry/grunt-autoprefixer)\n[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)\n\n> [Autoprefixer](https://github.com/postcss/autoprefixer) parses CSS and adds vendor-prefixed CSS properties using the [Can I Use](http://caniuse.com/) database.\n\n## Getting Started\nThis plugin requires Grunt `~0.4.0`\n\nIf you haven\'t used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you\'re familiar with that process, you may install this plugin with this command:\n\n```shell\nnpm install grunt-autoprefixer --save-dev\n```\n\nOnce the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:\n\n```js\ngrunt.loadNpmTasks(\'grunt-autoprefixer\');\n```\n\n## The "autoprefixer" task\n\n### Overview\nIn your project\'s Gruntfile, add a section named `autoprefixer` to the data object passed into `grunt.initConfig()`.\n\n```js\ngrunt.initConfig({\n  autoprefixer: {\n    options: {\n      // Task-specific options go here.\n    },\n    your_target: {\n      // Target-specific file lists and/or options go here.\n    },\n  },\n})\n```\n\n### Options\n\n#### options.browsers\nType: `Array`\nDefault value: `[\'> 1%\', \'last 2 versions\', \'Firefox ESR\', \'Opera 12.1\']`\n\nYou can specify browsers actual for your project:\n\n```js\noptions: {\n  browsers: [\'last 2 version\', \'ie 8\', \'ie 9\']\n}\n```\n\n[Read more](https://github.com/postcss/autoprefixer#browsers).\n\n#### options.cascade\nType: `Boolean`\nDefault value: `true`\n\nPass `false` to disable ‘cascade’ indentation. Read more [here](https://github.com/postcss/autoprefixer#visual-cascade).\n\n#### options.diff\nType: `Boolean|String`\nDefault value: `false`\n\nSet it to `true` if you want to get an output patch file:\n\n```js\noptions: {\n  diff: true // or \'custom/path/to/file.css.patch\'\n}\n```\nAlso you can specify a path where to save this file. More examples in [Gruntfile](https://github.com/nDmitry/grunt-autoprefixer/blob/master/Gruntfile.js).\n\n#### options.map\nType: `Boolean|Object`\nDefault value: `false`\n\nIf the `map` option isn\'t defined or is set to `false`, Autoprefixer will neither create nor update a sourcemap.\n\nIf `true` is specified, Autoprefixer will try to find a sourcemap from a previous compilation step using an annotation comment (e.g. from Sass) and create a new sourcemap based on the found one (or just create a new sourcemap). The created sourcemap can be either a separate file or an inlined map depending on what the previous sourcemap was.\n\nYou can gain more control over sourcemap generation by setting an object to the `map` option:\n\n* `prev` (string or `false`): a path to a directory where a previous sourcemap is (e.g. `path/`). By default, Autoprefixer will try to find a previous sourcemap using a path from the annotation comment (or using the annotation comment itself if the map is inlined). You can also set this option to `false` to delete the previous sourcemap.\n* `inline` (boolean): whether a sourcemap will be inlined or not. By default, it will be the same as a previous sourcemap or a separate file.\n* `annotation` (boolean or string): set this option to `true` or `false` to enable or disable annotation comments. You can also overwrite an output sourcemap path using this option, e.g. `path/file.css.map` (by default, Autoprefixer will save your sourcemap to a directory where you save CSS). This option requires `inline` to be `false` or undefined.\n* `sourceContent` (boolean): whether original contents (e.g. Sass sources) will be included to a sourcemap. By default, Autoprefixer will add contents only if a previous sourcemap have them.\n\n#### options.silent\nType: `Boolean`\nDefault value: `false`\n\nIf the `silent` option is enabled, logging to the stdout will be suppressed.\n\n```js\noptions: {\n  silent: true\n}\n```\n\n### Usage Examples\n\n```js\ngrunt.initConfig({\n\n  autoprefixer: {\n\n    options: {\n      // Task-specific options go here.\n    },\n\n    // prefix the specified file\n    single_file: {\n      options: {\n        // Target-specific options go here.\n      },\n      src: \'src/css/file.css\',\n      dest: \'dest/css/file.css\'\n    },\n\n    // prefix all files\n    multiple_files: {\n      expand: true,\n      flatten: true,\n      src: \'src/css/*.css\', // -> src/css/file1.css, src/css/file2.css\n      dest: \'dest/css/\' // -> dest/css/file1.css, dest/css/file2.css\n    },\n\n    // if you have specified only the `src` param, the destination will be set automatically,\n    // so source files will be overwritten\n    no_dest: {\n      src: \'dest/css/file.css\' // globbing is also possible here\n    },\n\n    diff: {\n        options: {\n            diff: true\n        },\n        src: \'src/css/file.css\',\n        dest: \'dest/css/file.css\' // -> dest/css/file.css, dest/css/file.css.patch\n    },\n\n    sourcemap: {\n        options: {\n            map: true\n        },\n        src: \'src/css/file.css\',\n        dest: \'dest/css/file.css\' // -> dest/css/file.css, dest/css/file.css.map\n    },\n  }\n\n});\n```\n\nCheck out project\'s [Gruntfile.js](https://github.com/nDmitry/grunt-autoprefixer/blob/master/Gruntfile.js) for more examples.\n\n### Updating prefixes database\n\n```\n$ npm update caniuse-db\n```\n\n## Contributing\nIn lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).\n',
+48 silly resolved     readmeFilename: 'README.md',
+48 silly resolved     _id: 'grunt-autoprefixer@1.0.1',
+48 silly resolved     _from: 'grunt-autoprefixer@' } ]
+49 info install grunt-autoprefixer@1.0.1 into /Users/jeffreypierce/dev/jeffreypierce.github.io
+50 info installOne grunt-autoprefixer@1.0.1
+51 verbose from cache /Users/jeffreypierce/.npm/grunt-autoprefixer/1.0.1/package/package.json
+52 info /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer unbuild
+53 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer/package.json
+54 verbose tar unpack /Users/jeffreypierce/.npm/grunt-autoprefixer/1.0.1/package.tgz
+55 silly lockFile 3cec9cdb--node-modules-grunt-autoprefixer /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer
+56 verbose lock /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer /Users/jeffreypierce/.npm/3cec9cdb--node-modules-grunt-autoprefixer.lock
+57 silly lockFile b8aab646-t-autoprefixer-1-0-1-package-tgz /Users/jeffreypierce/.npm/grunt-autoprefixer/1.0.1/package.tgz
+58 verbose lock /Users/jeffreypierce/.npm/grunt-autoprefixer/1.0.1/package.tgz /Users/jeffreypierce/.npm/b8aab646-t-autoprefixer-1-0-1-package-tgz.lock
+59 silly gunzTarPerm modes [ '755', '644' ]
+60 silly gunzTarPerm extractEntry package.json
+61 silly gunzTarPerm extractEntry README.md
+62 silly gunzTarPerm extractEntry LICENSE
+63 silly gunzTarPerm extractEntry tasks/autoprefixer.js
+64 verbose read json /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer/package.json
+65 silly lockFile 3cec9cdb--node-modules-grunt-autoprefixer /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer
+66 silly lockFile 3cec9cdb--node-modules-grunt-autoprefixer /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer
+67 silly lockFile b8aab646-t-autoprefixer-1-0-1-package-tgz /Users/jeffreypierce/.npm/grunt-autoprefixer/1.0.1/package.tgz
+68 silly lockFile b8aab646-t-autoprefixer-1-0-1-package-tgz /Users/jeffreypierce/.npm/grunt-autoprefixer/1.0.1/package.tgz
+69 info preinstall grunt-autoprefixer@1.0.1
+70 verbose from cache /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer/package.json
+71 verbose readDependencies using package.json deps
+72 verbose from cache /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer/package.json
+73 verbose readDependencies using package.json deps
+74 verbose cache add [ 'autoprefixer-core@^3.0.0', null ]
+75 verbose cache add name=undefined spec="autoprefixer-core@^3.0.0" args=["autoprefixer-core@^3.0.0",null]
+76 verbose parsed url { protocol: null,
+76 verbose parsed url   slashes: null,
+76 verbose parsed url   auth: null,
+76 verbose parsed url   host: null,
+76 verbose parsed url   port: null,
+76 verbose parsed url   hostname: null,
+76 verbose parsed url   hash: null,
+76 verbose parsed url   search: null,
+76 verbose parsed url   query: null,
+76 verbose parsed url   pathname: 'autoprefixer-core@^3.0.0',
+76 verbose parsed url   path: 'autoprefixer-core@^3.0.0',
+76 verbose parsed url   href: 'autoprefixer-core@^3.0.0' }
+77 verbose cache add name="autoprefixer-core" spec="^3.0.0" args=["autoprefixer-core","^3.0.0"]
+78 verbose parsed url { protocol: null,
+78 verbose parsed url   slashes: null,
+78 verbose parsed url   auth: null,
+78 verbose parsed url   host: null,
+78 verbose parsed url   port: null,
+78 verbose parsed url   hostname: null,
+78 verbose parsed url   hash: null,
+78 verbose parsed url   search: null,
+78 verbose parsed url   query: null,
+78 verbose parsed url   pathname: '^3.0.0',
+78 verbose parsed url   path: '^3.0.0',
+78 verbose parsed url   href: '^3.0.0' }
+79 verbose addNamed [ 'autoprefixer-core', '^3.0.0' ]
+80 verbose addNamed [ null, null ]
+81 silly lockFile e2c9bfa0-autoprefixer-core-3-0-0 autoprefixer-core@^3.0.0
+82 verbose lock autoprefixer-core@^3.0.0 /Users/jeffreypierce/.npm/e2c9bfa0-autoprefixer-core-3-0-0.lock
+83 verbose cache add [ 'diff@~1.0.8', null ]
+84 verbose cache add name=undefined spec="diff@~1.0.8" args=["diff@~1.0.8",null]
+85 verbose parsed url { protocol: null,
+85 verbose parsed url   slashes: null,
+85 verbose parsed url   auth: null,
+85 verbose parsed url   host: null,
+85 verbose parsed url   port: null,
+85 verbose parsed url   hostname: null,
+85 verbose parsed url   hash: null,
+85 verbose parsed url   search: null,
+85 verbose parsed url   query: null,
+85 verbose parsed url   pathname: 'diff@~1.0.8',
+85 verbose parsed url   path: 'diff@~1.0.8',
+85 verbose parsed url   href: 'diff@~1.0.8' }
+86 verbose cache add name="diff" spec="~1.0.8" args=["diff","~1.0.8"]
+87 verbose parsed url { protocol: null,
+87 verbose parsed url   slashes: null,
+87 verbose parsed url   auth: null,
+87 verbose parsed url   host: null,
+87 verbose parsed url   port: null,
+87 verbose parsed url   hostname: null,
+87 verbose parsed url   hash: null,
+87 verbose parsed url   search: null,
+87 verbose parsed url   query: null,
+87 verbose parsed url   pathname: '~1.0.8',
+87 verbose parsed url   path: '~1.0.8',
+87 verbose parsed url   href: '~1.0.8' }
+88 verbose addNamed [ 'diff', '~1.0.8' ]
+89 verbose addNamed [ null, '>=1.0.8- <1.1.0-' ]
+90 silly lockFile 3356b8f1-diff-1-0-8 diff@~1.0.8
+91 verbose lock diff@~1.0.8 /Users/jeffreypierce/.npm/3356b8f1-diff-1-0-8.lock
+92 verbose cache add [ 'chalk@~0.5.0', null ]
+93 verbose cache add name=undefined spec="chalk@~0.5.0" args=["chalk@~0.5.0",null]
+94 verbose parsed url { protocol: null,
+94 verbose parsed url   slashes: null,
+94 verbose parsed url   auth: null,
+94 verbose parsed url   host: null,
+94 verbose parsed url   port: null,
+94 verbose parsed url   hostname: null,
+94 verbose parsed url   hash: null,
+94 verbose parsed url   search: null,
+94 verbose parsed url   query: null,
+94 verbose parsed url   pathname: 'chalk@~0.5.0',
+94 verbose parsed url   path: 'chalk@~0.5.0',
+94 verbose parsed url   href: 'chalk@~0.5.0' }
+95 verbose cache add name="chalk" spec="~0.5.0" args=["chalk","~0.5.0"]
+96 verbose parsed url { protocol: null,
+96 verbose parsed url   slashes: null,
+96 verbose parsed url   auth: null,
+96 verbose parsed url   host: null,
+96 verbose parsed url   port: null,
+96 verbose parsed url   hostname: null,
+96 verbose parsed url   hash: null,
+96 verbose parsed url   search: null,
+96 verbose parsed url   query: null,
+96 verbose parsed url   pathname: '~0.5.0',
+96 verbose parsed url   path: '~0.5.0',
+96 verbose parsed url   href: '~0.5.0' }
+97 verbose addNamed [ 'chalk', '~0.5.0' ]
+98 verbose addNamed [ null, '>=0.5.0- <0.6.0-' ]
+99 silly lockFile f0348437-chalk-0-5-0 chalk@~0.5.0
+100 verbose lock chalk@~0.5.0 /Users/jeffreypierce/.npm/f0348437-chalk-0-5-0.lock
+101 info addNameTag [ 'autoprefixer-core', '^3.0.0' ]
+102 silly addNameRange { name: 'diff', range: '>=1.0.8- <1.1.0-', hasData: false }
+103 silly addNameRange { name: 'chalk', range: '>=0.5.0- <0.6.0-', hasData: false }
+104 verbose url raw autoprefixer-core
+105 verbose url resolving [ 'https://registry.npmjs.org/', './autoprefixer-core' ]
+106 verbose url resolved https://registry.npmjs.org/autoprefixer-core
+107 info trying registry request attempt 1 at 00:22:06
+108 verbose etag "BY0AHJ05D01II1FLUGY13WODD"
+109 http GET https://registry.npmjs.org/autoprefixer-core
+110 verbose url raw chalk
+111 verbose url resolving [ 'https://registry.npmjs.org/', './chalk' ]
+112 verbose url resolved https://registry.npmjs.org/chalk
+113 info trying registry request attempt 1 at 00:22:06
+114 verbose etag "8HINQLC6VR2Y43D6Y8HGXW6KZ"
+115 http GET https://registry.npmjs.org/chalk
+116 verbose url raw diff
+117 verbose url resolving [ 'https://registry.npmjs.org/', './diff' ]
+118 verbose url resolved https://registry.npmjs.org/diff
+119 info trying registry request attempt 1 at 00:22:06
+120 verbose etag "DZVFND8I8ZNSMRXPFJI6XJK15"
+121 http GET https://registry.npmjs.org/diff
+122 http 304 https://registry.npmjs.org/chalk
+123 silly registry.get cb [ 304,
+123 silly registry.get   { date: 'Mon, 06 Oct 2014 04:22:06 GMT',
+123 silly registry.get     server: 'Apache',
+123 silly registry.get     via: '1.1 varnish',
+123 silly registry.get     'last-modified': 'Mon, 06 Oct 2014 04:21:41 GMT',
+123 silly registry.get     'cache-control': 'max-age=60',
+123 silly registry.get     etag: '"8HINQLC6VR2Y43D6Y8HGXW6KZ"',
+123 silly registry.get     'x-served-by': 'cache-iad2130-IAD',
+123 silly registry.get     'x-cache': 'HIT',
+123 silly registry.get     'x-cache-hits': '3',
+123 silly registry.get     'x-timer': 'S1412569326.834476,VS0,VE0',
+123 silly registry.get     vary: 'Accept',
+123 silly registry.get     'content-length': '0',
+123 silly registry.get     'keep-alive': 'timeout=10, max=50',
+123 silly registry.get     connection: 'Keep-Alive' } ]
+124 verbose etag chalk from cache
+125 http 304 https://registry.npmjs.org/diff
+126 silly registry.get cb [ 304,
+126 silly registry.get   { date: 'Mon, 06 Oct 2014 04:22:06 GMT',
+126 silly registry.get     server: 'Apache',
+126 silly registry.get     via: '1.1 varnish',
+126 silly registry.get     'last-modified': 'Mon, 06 Oct 2014 04:22:06 GMT',
+126 silly registry.get     'cache-control': 'max-age=60',
+126 silly registry.get     etag: '"DZVFND8I8ZNSMRXPFJI6XJK15"',
+126 silly registry.get     'x-served-by': 'cache-iad2128-IAD',
+126 silly registry.get     'x-cache': 'HIT',
+126 silly registry.get     'x-cache-hits': '1',
+126 silly registry.get     'x-timer': 'S1412569326.833648,VS0,VE0',
+126 silly registry.get     vary: 'Accept',
+126 silly registry.get     'content-length': '0',
+126 silly registry.get     'keep-alive': 'timeout=10, max=50',
+126 silly registry.get     connection: 'Keep-Alive' } ]
+127 verbose etag diff from cache
+128 silly addNameRange number 2 { name: 'diff', range: '>=1.0.8- <1.1.0-', hasData: true }
+129 silly addNameRange versions [ 'diff',
+129 silly addNameRange   [ '1.0.0',
+129 silly addNameRange     '1.0.1',
+129 silly addNameRange     '1.0.2',
+129 silly addNameRange     '1.0.3',
+129 silly addNameRange     '1.0.4',
+129 silly addNameRange     '1.0.5',
+129 silly addNameRange     '1.0.6',
+129 silly addNameRange     '1.0.7',
+129 silly addNameRange     '1.0.8' ] ]
+130 verbose addNamed [ 'diff', '1.0.8' ]
+131 verbose addNamed [ '1.0.8', '1.0.8' ]
+132 silly lockFile 2c973233-diff-1-0-8 diff@1.0.8
+133 verbose lock diff@1.0.8 /Users/jeffreypierce/.npm/2c973233-diff-1-0-8.lock
+134 silly addNameRange number 2 { name: 'chalk', range: '>=0.5.0- <0.6.0-', hasData: true }
+135 silly addNameRange versions [ 'chalk',
+135 silly addNameRange   [ '0.1.0',
+135 silly addNameRange     '0.1.1',
+135 silly addNameRange     '0.2.0',
+135 silly addNameRange     '0.2.1',
+135 silly addNameRange     '0.3.0',
+135 silly addNameRange     '0.4.0',
+135 silly addNameRange     '0.5.0',
+135 silly addNameRange     '0.5.1' ] ]
+136 verbose addNamed [ 'chalk', '0.5.1' ]
+137 verbose addNamed [ '0.5.1', '0.5.1' ]
+138 silly lockFile c28973bb-chalk-0-5-1 chalk@0.5.1
+139 verbose lock chalk@0.5.1 /Users/jeffreypierce/.npm/c28973bb-chalk-0-5-1.lock
+140 verbose read json /Users/jeffreypierce/.npm/diff/1.0.8/package/package.json
+141 verbose read json /Users/jeffreypierce/.npm/chalk/0.5.1/package/package.json
+142 silly lockFile 2c973233-diff-1-0-8 diff@1.0.8
+143 silly lockFile 2c973233-diff-1-0-8 diff@1.0.8
+144 silly lockFile c28973bb-chalk-0-5-1 chalk@0.5.1
+145 silly lockFile c28973bb-chalk-0-5-1 chalk@0.5.1
+146 silly lockFile 3356b8f1-diff-1-0-8 diff@~1.0.8
+147 silly lockFile 3356b8f1-diff-1-0-8 diff@~1.0.8
+148 silly lockFile f0348437-chalk-0-5-0 chalk@~0.5.0
+149 silly lockFile f0348437-chalk-0-5-0 chalk@~0.5.0
+150 http 304 https://registry.npmjs.org/autoprefixer-core
+151 silly registry.get cb [ 304,
+151 silly registry.get   { date: 'Mon, 06 Oct 2014 04:22:06 GMT',
+151 silly registry.get     server: 'Apache',
+151 silly registry.get     via: '1.1 varnish',
+151 silly registry.get     'last-modified': 'Mon, 06 Oct 2014 04:22:06 GMT',
+151 silly registry.get     'cache-control': 'max-age=60',
+151 silly registry.get     etag: '"BY0AHJ05D01II1FLUGY13WODD"',
+151 silly registry.get     'x-served-by': 'cache-iad2126-IAD',
+151 silly registry.get     'x-cache': 'HIT',
+151 silly registry.get     'x-cache-hits': '1',
+151 silly registry.get     'x-timer': 'S1412569326.814324,VS0,VE53',
+151 silly registry.get     vary: 'Accept',
+151 silly registry.get     'content-length': '0',
+151 silly registry.get     'keep-alive': 'timeout=10, max=50',
+151 silly registry.get     connection: 'Keep-Alive' } ]
+152 verbose etag autoprefixer-core from cache
+153 silly lockFile e2c9bfa0-autoprefixer-core-3-0-0 autoprefixer-core@^3.0.0
+154 silly lockFile e2c9bfa0-autoprefixer-core-3-0-0 autoprefixer-core@^3.0.0
+155 verbose about to build /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer
+156 info /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer unbuild
+157 verbose from cache /Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules/grunt-autoprefixer/package.json
+158 info preuninstall grunt-autoprefixer@1.0.1
+159 info uninstall grunt-autoprefixer@1.0.1
+160 verbose true,/Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules,/Users/jeffreypierce/dev/jeffreypierce.github.io/node_modules unbuild grunt-autoprefixer@1.0.1
+161 info postuninstall grunt-autoprefixer@1.0.1
+162 error Error: No compatible version found: autoprefixer-core@'^3.0.0'
+162 error Valid install targets:
+162 error ["3.0.0","3.0.1","3.1.0"]
+162 error     at installTargetsError (/usr/local/lib/node_modules/npm/lib/cache.js:685:10)
+162 error     at /usr/local/lib/node_modules/npm/lib/cache.js:607:10
+162 error     at saved (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:138:7)
+162 error     at Object.oncomplete (fs.js:107:15)
+163 error If you need help, you may report this log at:
+163 error     <http://github.com/isaacs/npm/issues>
+163 error or email it to:
+163 error     <npm-@googlegroups.com>
+164 error System Darwin 13.4.0
+165 error command "node" "/usr/local/bin/npm" "install" "grunt-autoprefixer" "--save-dev"
+166 error cwd /Users/jeffreypierce/dev/jeffreypierce.github.io
+167 error node -v v0.10.5
+168 error npm -v 1.2.18
+169 verbose exit [ 1, true ]
