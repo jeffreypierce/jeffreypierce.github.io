@@ -11,6 +11,7 @@ module.exports = (grunt) ->
           'app.js': [
             'app/scripts/utils.coffee'
             'app/scripts/coloring.coffee'
+            'app/scripts/playback.coffee'
           ]
 
     jade:

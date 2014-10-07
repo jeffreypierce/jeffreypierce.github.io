@@ -35,3 +35,28 @@ findAll = (selector, scope) ->
   if scope?
     el = scope.querySelectorAll selector
   el
+
+unique = (arr) ->
+  comparer = compareObject = (a, b) ->
+    if a.x is b.x
+      if a.pitch < b.pitch
+        -1
+      else if a.artist > b.artist
+        1
+      else
+        0
+    else
+      if a.title < b.title
+        -1
+      else
+        1
+
+  arr.sort comparer
+  end = undefined
+  i = 0
+
+  while i < arr.length - 1
+    if comparer(arr[i], arr[i + 1]) is 0
+      arr.splice i, 1
+    ++i
+  arr

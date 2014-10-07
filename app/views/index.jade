@@ -11,17 +11,21 @@ html
     canvas#canvas
 
     .controls
-      h5 COLORS
+      h5 COLOR &amp; PITCH
       ul.colors
         - for (var i=1; i<10; i++)
           li(class="color-#{i} colors__color")
         li.color-10.colors__erase.colors__color ERASER
 
       hr.clear
-      h5 SIZES
+      h5 SIZE &amp; VOLUME
       ul.sizes
         - for (var i=1; i<5; i++)
           li(class="size-#{i * 8} sizes__size")
+      hr.clear
+      h5 PLAYBACK
+        .play__button
+          .play__icon
 
   footer.social
 

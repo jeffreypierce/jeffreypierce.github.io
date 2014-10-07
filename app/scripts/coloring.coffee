@@ -1,6 +1,9 @@
 # shared variables
 canvas = null
 context = null
+window.AudioContext = window.AudioContext || window.webkitAudioContext
+audioContext = new AudioContext()
+
 img = null
 offsetX = 0
 offsetY = 0
@@ -10,10 +13,12 @@ colors = ['#F07464', '#9BAAB9', '#99704B',
           '#FFFFFF']
 
 color = ''
+pitch = 110
 size = 0
 points = []
+cursor = null
 
-# bind events
+
 bindEvents = (colorFlags, sizeFlags, colorLinks, sizeLinks) ->
   isDrawing = false
 
@@ -23,9 +28,11 @@ bindEvents = (colorFlags, sizeFlags, colorLinks, sizeLinks) ->
     console.log selected
     colorIndex = /\d+/.exec selected.className
     color = colors[colorIndex - 1]
+    pitch = pitches[colorIndex - 1]
     makeCursor()
     removeClassAll colorLinks, 'active'
     addClass selected, 'active'
+    pluck(2, 0.6, pitches[colorIndex - 1])
 
   sizeFlags.addEventListener 'mouseup', (e) ->
     selected = e.target
@@ -62,9 +69,37 @@ bindEvents = (colorFlags, sizeFlags, colorLinks, sizeLinks) ->
     offsetX = (document.documentElement.clientWidth - canvas.width) / 2
     offsetY = (document.documentElement.clientHeight - canvas.height) / 2
 
-# canvas functions
+  playback = find '.play__button'
+
+  playback.addEventListener 'mouseup', (e) ->
+    # copy and remove dupes
+    playbackPoints = unique(JSON.parse(JSON.stringify(points)))
+
+    console.log points.length, playbackPoints.length
+    i = 0
+    playback = () ->
+      console.log 'called'
+      if i < 1000
+        j = 0
+        while j < playbackPoints.length
+          console.log playbackPoints.length
+          if i == Math.floor playbackPoints[j].x
+
+            # pluck(playbackPoints[j].y / 100,
+            #   (playbackPoints[j].size / 100),
+            #   playbackPoints[j].pitch)
+            playbackPoints.slice i
+          j++
+        i++
+      else
+        clearInterval(interval)
+
+    interval = setInterval playback, 100
+
+
+# canvas drawing functions
 addPoint = (x, y, dragging) ->
-  point = x: x, y: y, drag: dragging, color: color, size: size
+  point = x: x, y: y, drag: dragging, color: color, size: size, pitch: pitch
   points.push point
 
 drawPoints = ->
@@ -94,7 +129,6 @@ drawPoints = ->
     img.height
 
 makeCursor = ->
-  cursor = document.createElement 'canvas'
   cursorContext = cursor.getContext '2d'
 
   cursor.width = size
@@ -116,13 +150,14 @@ init = ->
   colorLinks = findAll '.colors__color'
   sizeFlags = find '.sizes'
   sizeLinks = findAll '.sizes__size'
+  cursor = document.createElement 'canvas'
 
   canvas.width = 1000
   canvas.height = 1000
 
   bindEvents colorFlags, sizeFlags, colorLinks, sizeLinks
 
-  window.dispatchEvent new Event('resize')
+  window.dispatchEvent new Event 'resize'
 
   img = new Image()
   img.src = 'assets/InternetBad.png'

@@ -1,0 +1,30 @@
+.play__button {
+  position: relative;
+  border: 2px solid darken(#f7f7f7, 6%);
+  border-radius: 36px;
+  background-color: #f7f7f7;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  margin: 6px;
+  -webkit-transition: border-color 0.2s ease-in;
+  &:hover{
+    border: 2px solid #BCBDC1;
+    -webkit-filter: glow(8px);
+    .play-icon{
+      border-left-color: #BCBDC1;
+    }
+  }
+}
+
+.play__icon {
+  position:relative;
+  top: 10px;
+  left: 35%;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid darken(#f7f7f7, 6%);
+  -webkit-transition: border-color 0.2s ease-in;
+}

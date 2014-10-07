@@ -2,6 +2,8 @@
 @import 'colors';
 @import 'social';
 @import 'sizes';
+@import 'playback';
+
 
 html, body {
   margin:0;
@@ -24,18 +26,22 @@ html, body {
   -o-font-smoothing: antialiased;
   font-smoothing: antialiased;
 }
+
 .danger {
   width: 100%;
   height: 100%;
 }
+
 .controls {
   position: absolute;
   z-index: 100;
   margin: 0 20px;
+  right: 0;
   h5 {
     margin: 20px 0 10px 0;
   }
 }
+
 hr.clear {
   clear: both;
   visibility: hidden;
