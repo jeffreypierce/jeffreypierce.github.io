@@ -17,13 +17,28 @@ pitch = 110
 size = 0
 points = []
 cursor = null
-tempo = 10
+tempo = 100
+plucks = []
+interval = undefined
+canvasRatio = 0
 
 
-bindEvents = (colorFlags, sizeFlags, colorLinks, sizeLinks) ->
+bindColoringEvents = (colorFlags, sizeFlags, colorLinks, sizeLinks) ->
+  # dom elements, etc...
   isDrawing = false
-  playback = find '.play__button'
+  colorFlags = find '.colors'
+  colorLinks = findAll '.colors__color'
+  sizeFlags = find '.sizes'
+  sizeLinks = findAll '.sizes__size'
 
+  # set inital selections
+  addClass sizeLinks[1], 'active'
+  size = 16
+
+  addClass colorLinks[0], 'active'
+  color = colors[0]
+
+  # mouse events
   colorFlags.addEventListener 'mouseup', (e) ->
     selected = e.target
     colorIndex = /\d+/.exec selected.className
@@ -69,43 +84,6 @@ bindEvents = (colorFlags, sizeFlags, colorLinks, sizeLinks) ->
     offsetX = (document.documentElement.clientWidth - canvas.width) / 2
     offsetY = (document.documentElement.clientHeight - canvas.height) / 2
 
-  playback.addEventListener 'mouseup', (e) ->
-    # copy and remove dupes
-    playbackPoints = unique JSON.parse(JSON.stringify(points))
-
-    i = 0
-    _playback = () ->
-      if i < 1000
-        j = 0
-
-        drawPoints()
-        
-        context.beginPath()
-        context.moveTo i, 0
-        context.lineTo i, 1000
-        context.closePath()
-        context.lineWidth = 1
-        context.strokeStyle = colors[0]
-        context.stroke()
-                
-        while j < playbackPoints.length
-          if i == Math.floor playbackPoints[j].x
-            _playNote = ->
-              pluck playbackPoints[j].y / 100,
-                (playbackPoints[j].size / 100),
-                playbackPoints[j].pitch
-            _playNote()  
-
-            
-          j++
-        i++
-      else
-        drawPoints()
-        clearInterval(interval)
-
-    interval = setInterval _playback, tempo
-
-
 # canvas drawing functions
 addPoint = (x, y, dragging) ->
   point = x: x, y: y, drag: dragging, color: color, size: size, pitch: pitch
@@ -120,7 +98,7 @@ drawPoints = ->
   i = 0
   while i < points.length
     context.beginPath()
-    
+
     if points[i].drag and i
       context.moveTo points[i - 1].x, points[i - 1].y
     else
@@ -135,8 +113,6 @@ drawPoints = ->
   context.drawImage img,
     (canvas.width - img.width) / 2,
     (canvas.height - img.height) / 2,
-    img.width,
-    img.height
 
 makeCursor = ->
   cursorContext = cursor.getContext '2d'
@@ -147,7 +123,7 @@ makeCursor = ->
   cursorContext.beginPath()
   cursorContext.arc size / 2, size / 2, size / 2, 0, 2 * Math.PI, false
   cursorContext.closePath()
-  
+
   cursorContext.fillStyle = color
   cursorContext.fill()
 
@@ -157,29 +133,19 @@ init = ->
   canvas = find 'canvas'
   context = canvas.getContext "2d"
   context.globalAlpha = 0.5
-  colorFlags = find '.colors'
-  colorLinks = findAll '.colors__color'
-  sizeFlags = find '.sizes'
-  sizeLinks = findAll '.sizes__size'
   cursor = document.createElement 'canvas'
 
-  canvas.width = 1000
-  canvas.height = 1000
+  canvas.width = 700
+  canvas.height = 2000
 
-  bindEvents colorFlags, sizeFlags, colorLinks, sizeLinks
+  bindColoringEvents()
+  bindPlaybackEvents()
 
   window.dispatchEvent new Event 'resize'
 
   img = new Image()
   img.src = 'assets/InternetBad.png'
 
-# set inital selections
-  addClass sizeLinks[1], 'active'
-  size = 16
-
-  addClass colorLinks[0], 'active'
-  color = colors[0]
-
   makeCursor()
 
-init()
+window.addEventListener 'load', (e) -> init()

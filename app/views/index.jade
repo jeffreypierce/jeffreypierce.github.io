@@ -25,7 +25,14 @@ html
       hr.clear
       h5 PLAYBACK
         .play__button
-          .play__icon
+          .play__icon-play
+          .play__icon-stop
+        label.tempo__label(for="tempo") TEMPO
+        input.tempo__slider(type="range", min="-50", max="150", name="tempo")
+
+
+      .clear__button CLEAR
+
 
   footer.social
 

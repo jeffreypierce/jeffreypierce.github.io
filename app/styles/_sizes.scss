@@ -11,43 +11,42 @@
   float: left;
   display: inline-block;
   background-color: #f7f7f7;
-  border: 1px solid darken(#f7f7f7, 3%);
-  -webkit-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, background-color 0.2s ease-in;
-  -moz-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, background-color 0.2s ease-in;
-  -ms-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, background-color 0.2s ease-in;
-  -o-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, background-color 0.2s ease-in;
-  transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, background-color 0.2s ease-in;
+  border: 2px solid darken(#f7f7f7, 3%);
+  -webkit-transition: height 0.2s ease-in, width 0.2s ease-in, border 0.2s ease-in, background-color 0.2s ease-in;
+  -moz-transition: height 0.2s ease-in, width 0.2s ease-in, border 0.2s ease-in, background-color 0.2s ease-in;
+  transition: height 0.2s ease-in, width 0.2s ease-in, border 0.2s ease-in, background-color 0.2s ease-in;
   cursor: pointer;
   &:hover{
     background-color: #BCBDC1;
   }
   &.active {
+    border: 2px solid #6E6F71;
     background-color: #6E6F71;
   }
 }
 .size-8 {
-  margin: 12px 8px;
+  margin: 12px 6px;
   height: 8px;
   width: 8px;
   border-radius: 8px;
 }
 
 .size-16 {
-  margin: 8px 8px;
+  margin: 8px 6px;
   height: 16px;
   width: 16px;
   border-radius: 16px;
 }
 
 .size-24 {
-  margin: 4px 8px;
+  margin: 4px 6px;
   height: 24px;
   width: 24px;
   border-radius: 24px;
 }
 
 .size-32 {
-  margin: 0 8px;
+  margin: 0 6px;
   height: 32px;
   width: 32px;
   border-radius: 32px;

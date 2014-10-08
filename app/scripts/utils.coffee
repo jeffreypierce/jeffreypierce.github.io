@@ -59,16 +59,32 @@ unique = (arr) ->
       arr.splice i, 1
     ++i
   arr
-  
-debounce = (func, threshold, execAsap) ->
+
+throttle = (func, wait, options) ->
+  context = undefined
+  args = undefined
+  result = undefined
   timeout = null
-  (args...) ->
-    obj = this
-    delayed = ->
-      func.apply(obj, args) unless execAsap
+  previous = 0
+  options = {}  unless options
+  later = ->
+    previous = (if options.leading is false then 0 else new Date().getTime())
+    timeout = null
+    result = func.apply(context, args)
+    context = args = null  unless timeout
+    return
+
+  ->
+    now = new Date().getTime()
+    previous = now  if not previous and options.leading is false
+    remaining = wait - (now - previous)
+    context = this
+    args = arguments
+    if remaining <= 0 or remaining > wait
+      clearTimeout timeout
       timeout = null
-    if timeout
-      clearTimeout(timeout)
-    else if (execAsap)
-      func.apply(obj, args)
-    timeout = setTimeout delayed, threshold || 100
+      previous = now
+      result = func.apply(context, args)
+      context = args = null  unless timeout
+    else timeout = setTimeout(later, remaining)  if not timeout and options.trailing isnt false
+    result

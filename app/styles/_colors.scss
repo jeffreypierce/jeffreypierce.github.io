@@ -19,8 +19,6 @@ $colors: #F07464 #9BAAB9 #99704B #495867 #F2C66D #FBE6E1 #BCBDC1 #A0C2BB #F3A471
   cursor: pointer;
   -webkit-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, margin 0.2s ease-in;
   -moz-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, margin 0.2s ease-in;
-  -ms-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, margin 0.2s ease-in;
-  -o-transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, margin 0.2s ease-in;
   transition: height 0.2s ease-in, width 0.2s ease-in, border-radius 0.2s ease-in, margin 0.2s ease-in;
   &:hover, &.active {
     height: 48px;
@@ -52,8 +50,6 @@ $colors: #F07464 #9BAAB9 #99704B #495867 #F2C66D #FBE6E1 #BCBDC1 #A0C2BB #F3A471
   margin: 5px 9px;
   -webkit-transition: border 0.2 ease-in;
   -moz-transition: border 0.2 ease-in;
-  -ms-transition: border 0.2 ease-in;
-  -o-transition: border 0.2 ease-in;
   transition: border 0.2 ease-in;
 
   &:hover, &.active {

@@ -1,6 +1,5 @@
 (function() {
-  var addClass, addPoint, audioContext, bindEvents, canvas, color, colors, context, cursor, debounce, drawPoints, find, findAll, hasClass, img, init, makeCursor, offsetX, offsetY, pitch, pitches, pluck, points, removeClass, removeClassAll, size, tempo, unique,
-    __slice = [].slice;
+  var addClass, addPoint, audioContext, bindColoringEvents, bindPlaybackEvents, canvas, canvasRatio, color, colors, context, cursor, drawPoints, find, findAll, hasClass, img, init, interval, makeCursor, offsetX, offsetY, pitch, pitches, pluck, plucks, points, removeClass, removeClassAll, size, tempo, throttle, unique;
 
   hasClass = function(el, className) {
     return new RegExp(" " + className + " ").test(" " + el.className + " ");
@@ -88,25 +87,47 @@
     return arr;
   };
 
-  debounce = function(func, threshold, execAsap) {
-    var timeout;
+  throttle = function(func, wait, options) {
+    var args, context, later, previous, result, timeout;
+    context = void 0;
+    args = void 0;
+    result = void 0;
     timeout = null;
-    return function() {
-      var args, delayed, obj;
-      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
-      obj = this;
-      delayed = function() {
-        if (!execAsap) {
-          func.apply(obj, args);
-        }
-        return timeout = null;
-      };
-      if (timeout) {
-        clearTimeout(timeout);
-      } else if (execAsap) {
-        func.apply(obj, args);
+    previous = 0;
+    if (!options) {
+      options = {};
+    }
+    later = function() {
+      previous = (options.leading === false ? 0 : new Date().getTime());
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) {
+        context = args = null;
       }
-      return timeout = setTimeout(delayed, threshold || 100);
+    };
+    return function() {
+      var now, remaining;
+      now = new Date().getTime();
+      if (!previous && options.leading === false) {
+        previous = now;
+      }
+      remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        clearTimeout(timeout);
+        timeout = null;
+        previous = now;
+        result = func.apply(context, args);
+        if (!timeout) {
+          context = args = null;
+        }
+      } else {
+        if (!timeout && options.trailing !== false) {
+          timeout = setTimeout(later, remaining);
+        }
+      }
+      return result;
     };
   };
 
@@ -136,12 +157,25 @@
 
   cursor = null;
 
-  tempo = 10;
+  tempo = 100;
 
-  bindEvents = function(colorFlags, sizeFlags, colorLinks, sizeLinks) {
-    var isDrawing, playback;
+  plucks = [];
+
+  interval = void 0;
+
+  canvasRatio = 0;
+
+  bindColoringEvents = function(colorFlags, sizeFlags, colorLinks, sizeLinks) {
+    var isDrawing;
     isDrawing = false;
-    playback = find('.play__button');
+    colorFlags = find('.colors');
+    colorLinks = findAll('.colors__color');
+    sizeFlags = find('.sizes');
+    sizeLinks = findAll('.sizes__size');
+    addClass(sizeLinks[1], 'active');
+    size = 16;
+    addClass(colorLinks[0], 'active');
+    color = colors[0];
     colorFlags.addEventListener('mouseup', function(e) {
       var colorIndex, selected;
       selected = e.target;
@@ -180,43 +214,10 @@
     canvas.addEventListener('mouseleave', function(e) {
       return isDrawing = false;
     });
-    window.onresize = function(e) {
+    return window.onresize = function(e) {
       offsetX = (document.documentElement.clientWidth - canvas.width) / 2;
       return offsetY = (document.documentElement.clientHeight - canvas.height) / 2;
     };
-    return playback.addEventListener('mouseup', function(e) {
-      var i, interval, playbackPoints, _playback;
-      playbackPoints = unique(JSON.parse(JSON.stringify(points)));
-      i = 0;
-      _playback = function() {
-        var j, _playNote;
-        if (i < 1000) {
-          j = 0;
-          drawPoints();
-          context.beginPath();
-          context.moveTo(i, 0);
-          context.lineTo(i, 1000);
-          context.closePath();
-          context.lineWidth = 1;
-          context.strokeStyle = colors[0];
-          context.stroke();
-          while (j < playbackPoints.length) {
-            if (i === Math.floor(playbackPoints[j].x)) {
-              _playNote = function() {
-                return pluck(playbackPoints[j].y / 100, playbackPoints[j].size / 100, playbackPoints[j].pitch);
-              };
-              _playNote();
-            }
-            j++;
-          }
-          return i++;
-        } else {
-          drawPoints();
-          return clearInterval(interval);
-        }
-      };
-      return interval = setInterval(_playback, tempo);
-    });
   };
 
   addPoint = function(x, y, dragging) {
@@ -252,7 +253,7 @@
       context.stroke();
       i++;
     }
-    return context.drawImage(img, (canvas.width - img.width) / 2, (canvas.height - img.height) / 2, img.width, img.height);
+    return context.drawImage(img, (canvas.width - img.width) / 2, (canvas.height - img.height) / 2);
   };
 
   makeCursor = function() {
@@ -269,31 +270,85 @@
   };
 
   init = function() {
-    var colorFlags, colorLinks, sizeFlags, sizeLinks;
     canvas = find('canvas');
     context = canvas.getContext("2d");
     context.globalAlpha = 0.5;
-    colorFlags = find('.colors');
-    colorLinks = findAll('.colors__color');
-    sizeFlags = find('.sizes');
-    sizeLinks = findAll('.sizes__size');
     cursor = document.createElement('canvas');
-    canvas.width = 1000;
-    canvas.height = 1000;
-    bindEvents(colorFlags, sizeFlags, colorLinks, sizeLinks);
+    canvas.width = 700;
+    canvas.height = 2000;
+    bindColoringEvents();
+    bindPlaybackEvents();
     window.dispatchEvent(new Event('resize'));
     img = new Image();
     img.src = 'assets/InternetBad.png';
-    addClass(sizeLinks[1], 'active');
-    size = 16;
-    addClass(colorLinks[0], 'active');
-    color = colors[0];
     return makeCursor();
   };
 
-  init();
+  window.addEventListener('load', function(e) {
+    return init();
+  });
 
   pitches = [110, 146.832, 164.814, 174.614, 195.998, 220, 246.942, 261.626, 293.665, 329.628];
+
+  bindPlaybackEvents = function() {
+    var clearButton, i, isPlaying, playback, tempoSlider, _playback, _stopPlaying;
+    isPlaying = false;
+    playback = find('.play__button');
+    tempoSlider = find('.tempo__slider');
+    clearButton = find('.clear__button');
+    _stopPlaying = function() {
+      drawPoints();
+      clearInterval(interval);
+      removeClass(playback, 'playing');
+      return isPlaying = false;
+    };
+    i = 0;
+    _playback = function() {
+      var j, playbackPoints;
+      playbackPoints = unique(JSON.parse(JSON.stringify(points)));
+      if (i < canvas.width) {
+        j = 0;
+        drawPoints();
+        context.beginPath();
+        context.moveTo(i, 0);
+        context.lineTo(i, canvas.height);
+        context.closePath();
+        context.lineWidth = 1;
+        context.strokeStyle = colors[0];
+        context.stroke();
+        while (j < playbackPoints.length) {
+          if (i === Math.floor(playbackPoints[j].x)) {
+            pluck((playbackPoints[j].y / 250) - 1, playbackPoints[j].size / 100, playbackPoints[j].pitch);
+          }
+          j = j + 4;
+        }
+        return i++;
+      } else {
+        return _stopPlaying();
+      }
+    };
+    clearButton.addEventListener('mouseup', function(e) {
+      points = [];
+      return _stopPlaying();
+    });
+    tempoSlider.addEventListener('change', function(e) {
+      tempo = 165 - this.value;
+      if (isPlaying) {
+        clearInterval(interval);
+        return interval = setInterval(_playback, tempo);
+      }
+    });
+    return playback.addEventListener('mouseup', function(e) {
+      if (isPlaying) {
+        return _stopPlaying();
+      } else {
+        addClass(this, 'playing');
+        i = 0;
+        interval = setInterval(_playback, tempo);
+        return isPlaying = true;
+      }
+    });
+  };
 
   pluck = function(length, volume, frequency) {
     var audioBuffer, begin, dry, end, masterVol, pluckSound, reverb, sampleRate, samples, wet, _generateImpulse, _karplusStrong, _noise;
@@ -347,7 +402,7 @@
         length = 3;
       }
       if (decay == null) {
-        decay = 50;
+        decay = 20;
       }
       rate = sampleRate;
       length = rate * length;
@@ -371,7 +426,7 @@
     pluckSound.buffer = audioBuffer;
     reverb.buffer = _generateImpulse();
     wet.gain.value = 0.8;
-    dry.gain.value = 0.5;
+    dry.gain.value = 0.6;
     masterVol.gain.value = volume;
     pluckSound.connect(reverb);
     pluckSound.connect(dry);
