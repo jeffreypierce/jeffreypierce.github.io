@@ -2,7 +2,6 @@ hasClass = (el, className) ->
   new RegExp(" " + className + " ").test " " + el.className + " "
 
 addClass = (el, className) ->
-  console.log className
   el.className += " " + className  unless hasClass el, className
   el
 
@@ -41,12 +40,12 @@ unique = (arr) ->
     if a.x is b.x
       if a.pitch < b.pitch
         -1
-      else if a.artist > b.artist
+      else if a.x > b.x
         1
       else
         0
     else
-      if a.title < b.title
+      if a.pitch < b.pitch
         -1
       else
         1
@@ -60,3 +59,16 @@ unique = (arr) ->
       arr.splice i, 1
     ++i
   arr
+  
+debounce = (func, threshold, execAsap) ->
+  timeout = null
+  (args...) ->
+    obj = this
+    delayed = ->
+      func.apply(obj, args) unless execAsap
+      timeout = null
+    if timeout
+      clearTimeout(timeout)
+    else if (execAsap)
+      func.apply(obj, args)
+    timeout = setTimeout delayed, threshold || 100

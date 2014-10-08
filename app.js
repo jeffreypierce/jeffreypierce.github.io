@@ -1,12 +1,12 @@
 (function() {
-  var addClass, addPoint, audioContext, bindEvents, canvas, color, colors, context, cursor, drawPoints, find, findAll, hasClass, img, init, makeCursor, offsetX, offsetY, pitch, pitches, pluck, points, removeClass, removeClassAll, size, unique;
+  var addClass, addPoint, audioContext, bindEvents, canvas, color, colors, context, cursor, debounce, drawPoints, find, findAll, hasClass, img, init, makeCursor, offsetX, offsetY, pitch, pitches, pluck, points, removeClass, removeClassAll, size, tempo, unique,
+    __slice = [].slice;
 
   hasClass = function(el, className) {
     return new RegExp(" " + className + " ").test(" " + el.className + " ");
   };
 
   addClass = function(el, className) {
-    console.log(className);
     if (!hasClass(el, className)) {
       el.className += " " + className;
     }
@@ -63,13 +63,13 @@
       if (a.x === b.x) {
         if (a.pitch < b.pitch) {
           return -1;
-        } else if (a.artist > b.artist) {
+        } else if (a.x > b.x) {
           return 1;
         } else {
           return 0;
         }
       } else {
-        if (a.title < b.title) {
+        if (a.pitch < b.pitch) {
           return -1;
         } else {
           return 1;
@@ -86,6 +86,28 @@
       ++i;
     }
     return arr;
+  };
+
+  debounce = function(func, threshold, execAsap) {
+    var timeout;
+    timeout = null;
+    return function() {
+      var args, delayed, obj;
+      args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
+      obj = this;
+      delayed = function() {
+        if (!execAsap) {
+          func.apply(obj, args);
+        }
+        return timeout = null;
+      };
+      if (timeout) {
+        clearTimeout(timeout);
+      } else if (execAsap) {
+        func.apply(obj, args);
+      }
+      return timeout = setTimeout(delayed, threshold || 100);
+    };
   };
 
   canvas = null;
@@ -114,30 +136,32 @@
 
   cursor = null;
 
+  tempo = 10;
+
   bindEvents = function(colorFlags, sizeFlags, colorLinks, sizeLinks) {
     var isDrawing, playback;
     isDrawing = false;
+    playback = find('.play__button');
     colorFlags.addEventListener('mouseup', function(e) {
       var colorIndex, selected;
       selected = e.target;
-      console.log(selected);
       colorIndex = /\d+/.exec(selected.className);
       color = colors[colorIndex - 1];
       pitch = pitches[colorIndex - 1];
       makeCursor();
       removeClassAll(colorLinks, 'active');
       addClass(selected, 'active');
-      return pluck(2, 0.6, pitches[colorIndex - 1]);
+      return pluck(2, size / 100, pitches[colorIndex - 1]);
     });
     sizeFlags.addEventListener('mouseup', function(e) {
       var selected, sizeIndex;
       selected = e.target;
-      console.log(selected);
       sizeIndex = /\d+/.exec(selected.className);
       size = sizeIndex[0];
       makeCursor();
       removeClassAll(sizeLinks, 'active');
-      return addClass(selected, 'active');
+      addClass(selected, 'active');
+      return pluck(2, size / 100, pitch);
     });
     canvas.addEventListener('mousedown', function(e) {
       isDrawing = true;
@@ -160,30 +184,38 @@
       offsetX = (document.documentElement.clientWidth - canvas.width) / 2;
       return offsetY = (document.documentElement.clientHeight - canvas.height) / 2;
     };
-    playback = find('.play__button');
     return playback.addEventListener('mouseup', function(e) {
-      var i, interval, playbackPoints;
+      var i, interval, playbackPoints, _playback;
       playbackPoints = unique(JSON.parse(JSON.stringify(points)));
-      console.log(points.length, playbackPoints.length);
       i = 0;
-      playback = function() {
-        var j;
-        console.log('called');
+      _playback = function() {
+        var j, _playNote;
         if (i < 1000) {
           j = 0;
+          drawPoints();
+          context.beginPath();
+          context.moveTo(i, 0);
+          context.lineTo(i, 1000);
+          context.closePath();
+          context.lineWidth = 1;
+          context.strokeStyle = colors[0];
+          context.stroke();
           while (j < playbackPoints.length) {
-            console.log(playbackPoints.length);
             if (i === Math.floor(playbackPoints[j].x)) {
-              playbackPoints.slice(i);
+              _playNote = function() {
+                return pluck(playbackPoints[j].y / 100, playbackPoints[j].size / 100, playbackPoints[j].pitch);
+              };
+              _playNote();
             }
             j++;
           }
           return i++;
         } else {
+          drawPoints();
           return clearInterval(interval);
         }
       };
-      return interval = setInterval(playback, 100);
+      return interval = setInterval(_playback, tempo);
     });
   };
 
@@ -274,7 +306,6 @@
     if (frequency == null) {
       frequency = 440;
     }
-    console.log(length, volume, frequency);
     begin = audioContext.currentTime;
     end = begin + length;
     sampleRate = audioContext.sampleRate;

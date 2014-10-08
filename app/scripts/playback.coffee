@@ -4,7 +4,6 @@ pitches = [110, 146.832, 164.814,
   329.628]
 
 pluck = (length = 2, volume = 0.6, frequency = 440) ->
-  console.log length, volume, frequency
   begin = audioContext.currentTime
   end = begin + length
   sampleRate = audioContext.sampleRate
@@ -80,3 +79,5 @@ pluck = (length = 2, volume = 0.6, frequency = 440) ->
 
   pluckSound.start begin
   pluckSound.stop end
+    
+  

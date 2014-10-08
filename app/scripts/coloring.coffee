@@ -17,31 +17,31 @@ pitch = 110
 size = 0
 points = []
 cursor = null
+tempo = 10
 
 
 bindEvents = (colorFlags, sizeFlags, colorLinks, sizeLinks) ->
   isDrawing = false
+  playback = find '.play__button'
 
   colorFlags.addEventListener 'mouseup', (e) ->
-
     selected = e.target
-    console.log selected
     colorIndex = /\d+/.exec selected.className
     color = colors[colorIndex - 1]
     pitch = pitches[colorIndex - 1]
     makeCursor()
     removeClassAll colorLinks, 'active'
     addClass selected, 'active'
-    pluck(2, 0.6, pitches[colorIndex - 1])
+    pluck(2, size / 100, pitches[colorIndex - 1])
 
   sizeFlags.addEventListener 'mouseup', (e) ->
     selected = e.target
-    console.log selected
     sizeIndex = /\d+/.exec selected.className
     size = sizeIndex[0]
     makeCursor()
     removeClassAll sizeLinks, 'active'
     addClass selected, 'active'
+    pluck(2, size / 100, pitch)
 
   canvas.addEventListener 'mousedown', (e) ->
     isDrawing = true
@@ -69,32 +69,41 @@ bindEvents = (colorFlags, sizeFlags, colorLinks, sizeLinks) ->
     offsetX = (document.documentElement.clientWidth - canvas.width) / 2
     offsetY = (document.documentElement.clientHeight - canvas.height) / 2
 
-  playback = find '.play__button'
-
   playback.addEventListener 'mouseup', (e) ->
     # copy and remove dupes
-    playbackPoints = unique(JSON.parse(JSON.stringify(points)))
+    playbackPoints = unique JSON.parse(JSON.stringify(points))
 
-    console.log points.length, playbackPoints.length
     i = 0
-    playback = () ->
-      console.log 'called'
+    _playback = () ->
       if i < 1000
         j = 0
-        while j < playbackPoints.length
-          console.log playbackPoints.length
-          if i == Math.floor playbackPoints[j].x
 
-            # pluck(playbackPoints[j].y / 100,
-            #   (playbackPoints[j].size / 100),
-            #   playbackPoints[j].pitch)
-            playbackPoints.slice i
+        drawPoints()
+        
+        context.beginPath()
+        context.moveTo i, 0
+        context.lineTo i, 1000
+        context.closePath()
+        context.lineWidth = 1
+        context.strokeStyle = colors[0]
+        context.stroke()
+                
+        while j < playbackPoints.length
+          if i == Math.floor playbackPoints[j].x
+            _playNote = ->
+              pluck playbackPoints[j].y / 100,
+                (playbackPoints[j].size / 100),
+                playbackPoints[j].pitch
+            _playNote()  
+
+            
           j++
         i++
       else
+        drawPoints()
         clearInterval(interval)
 
-    interval = setInterval playback, 100
+    interval = setInterval _playback, tempo
 
 
 # canvas drawing functions
@@ -111,6 +120,7 @@ drawPoints = ->
   i = 0
   while i < points.length
     context.beginPath()
+    
     if points[i].drag and i
       context.moveTo points[i - 1].x, points[i - 1].y
     else
@@ -137,6 +147,7 @@ makeCursor = ->
   cursorContext.beginPath()
   cursorContext.arc size / 2, size / 2, size / 2, 0, 2 * Math.PI, false
   cursorContext.closePath()
+  
   cursorContext.fillStyle = color
   cursorContext.fill()
 

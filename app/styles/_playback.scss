@@ -10,15 +10,14 @@
   -webkit-transition: border-color 0.2s ease-in;
   &:hover{
     border: 2px solid #BCBDC1;
-    -webkit-filter: glow(8px);
-    .play-icon{
-      border-left-color: #BCBDC1;
+    .play__icon {
+      border-left: 12px solid #BCBDC1;
     }
   }
 }
 
 .play__icon {
-  position:relative;
+  position: relative;
   top: 10px;
   left: 35%;
   width: 0;
